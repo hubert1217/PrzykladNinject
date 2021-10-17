@@ -1,0 +1,17 @@
+﻿@model PrzykladNinject.Models.Faktura
+
+@{
+    ViewBag.Title = "About";
+}
+
+@Model.customers.NameCustomer
+@Model.customers.SurnameCustomer
+
+@foreach (var p in Model.repository.Products) 
+{ 
+    <div>
+        <h3>@p.Name</h3>
+        @p.Description
+        <h4>@p.Price.ToString("c")</h4>
+    </div>
+}

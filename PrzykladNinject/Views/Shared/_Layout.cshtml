@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <title>@ViewBag.Title - moja aplikacja platformy ASP.NET</title>    
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="#">Sklep sportowy</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Produkty", "List", "Home")</li>
+                <li>@Html.ActionLink("Faktura", "About", "Home")</li>
+                <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row panel">
+            <div id="categories" class="col-lg-2">
+                @Html.Action("Menu", "Nav")
+            </div>
+            <div class="col-lg-8">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>
