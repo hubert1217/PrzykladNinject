@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\Calculator.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartLine.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Faktura.cs" />
