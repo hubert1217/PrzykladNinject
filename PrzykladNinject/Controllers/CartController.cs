@@ -58,7 +58,8 @@ namespace PrzykladNinject.Controllers
             
             Cart cart = (Cart)Session["Cart"];
             if (cart == null) 
-            { 
+            {
+                cart = new Cart();
                 Session["Cart"] = cart;
             }
 
