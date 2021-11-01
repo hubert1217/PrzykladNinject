@@ -175,6 +175,7 @@
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -221,6 +222,7 @@
     <Content Include="Views\Shared\ProductSummary.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
