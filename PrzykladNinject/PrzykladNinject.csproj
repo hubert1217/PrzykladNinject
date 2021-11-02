@@ -171,6 +171,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Faktura.cs" />
     <Compile Include="Models\ICalculator.cs" />
+    <Compile Include="Models\IOrderProcessor.cs" />
     <Compile Include="Models\IProductRepository.cs" />
     <Compile Include="Models\PagingHelpers.cs" />
     <Compile Include="Models\PagingInfo.cs" />
