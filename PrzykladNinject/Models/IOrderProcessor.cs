@@ -8,5 +8,6 @@ namespace PrzykladNinject.Models
 {
     interface IOrderProcessor
     {
+        void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
     }
 }
