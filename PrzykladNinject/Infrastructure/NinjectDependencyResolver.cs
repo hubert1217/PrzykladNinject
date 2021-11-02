@@ -7,6 +7,7 @@ using Ninject;
 using PrzykladNinject.Models;
 using Moq;
 using PrzykladNinject.Entities;
+using System.Configuration;
 
 namespace PrzykladNinject.Infrastructure
 {
@@ -35,6 +36,17 @@ namespace PrzykladNinject.Infrastructure
 
             kernel.Bind<IProductRepository>().To<EFProductRepository>();
             kernel.Bind<ICalculator>().To<Calculator>();
+
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+
+            kernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+
+
         }
 
         public object GetService(Type serviceType) 
@@ -46,5 +58,6 @@ namespace PrzykladNinject.Infrastructure
         {
             return kernel.GetAll(serviceType);
         }
+
     }
 }
