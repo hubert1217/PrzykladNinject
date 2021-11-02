@@ -167,6 +167,7 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\CartLine.cs" />
+    <Compile Include="Models\CartModelBinder.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Faktura.cs" />
     <Compile Include="Models\ICalculator.cs" />
