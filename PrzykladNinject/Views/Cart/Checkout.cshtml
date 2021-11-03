@@ -45,6 +45,11 @@
     </div>
 
     <div class="form-group">
+        <label>Województwo:</label>
+        @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
         <label>Kod pocztowy:</label>
         @Html.TextBoxFor(x => x.Zip, new { @class = "form-control" })
     </div>

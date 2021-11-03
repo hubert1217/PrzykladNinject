@@ -37,17 +37,20 @@ namespace PrzykladNinject.Models
                 }
 
                 StringBuilder body = new StringBuilder()
-                    .AppendLine("Nowe zamówienie")
+                    .AppendLine("Nowe zamówienie:")
                     .AppendLine("---")
-                    .AppendLine("Produkty");
+                    .AppendLine("Produkty:");
 
                 foreach (var line in cart.Lines) 
                 {
                     var subtotal = line.Product.Price * line.Quantity;
-                    body.AppendFormat("{0} x {1} (wartość: {2:c}",line.Quantity, line.Product.Name, subtotal);
+                    body.AppendFormat("{0} x {1} (cena: {2:c}) ", line.Quantity, line.Product.Name, subtotal)
+                        .AppendLine();
+                    
                 }
 
                 body.AppendFormat("Wartość całkowita: {0:c}", cart.ComputeTotalValue())
+                    .AppendLine("")
                     .AppendLine("---")
                     .AppendLine("Wysyłka dla: ")
                     .AppendLine(shippingInfo.Name)
@@ -55,7 +58,7 @@ namespace PrzykladNinject.Models
                     .AppendLine(shippingInfo.Line2 ?? "")
                     .AppendLine(shippingInfo.Line3 ?? "")
                     .AppendLine(shippingInfo.City)
-                    .AppendLine(shippingInfo.State)
+                    .AppendLine(shippingInfo.State ?? "")
                     .AppendLine(shippingInfo.Country)
                     .AppendLine(shippingInfo.Zip)
                     .AppendLine("---")
@@ -69,7 +72,7 @@ namespace PrzykladNinject.Models
 
                 if (emailSettings.WriteAsFile) 
                 {
-                    mailMessage.BodyEncoding = Encoding.ASCII;
+                    mailMessage.BodyEncoding = Encoding.UTF8;
                 }
 
                 smtpClient.Send(mailMessage);

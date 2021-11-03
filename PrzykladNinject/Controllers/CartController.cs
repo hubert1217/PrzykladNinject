@@ -12,11 +12,12 @@ namespace PrzykladNinject.Controllers
     {
         
         private IProductRepository repository;
+        private IOrderProcessor orderProcessor;
 
-
-        public CartController(IProductRepository repoParam) 
+        public CartController(IProductRepository repoParam, IOrderProcessor proc) 
         {
             repository = repoParam;
+            orderProcessor = proc;
         }
 
 
@@ -79,6 +80,28 @@ namespace PrzykladNinject.Controllers
 
             return PartialView(cart);
         }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails) 
+        {
+            if (cart.Lines.Count() == 0) 
+            {
+                ModelState.AddModelError("", "Koszyk jest pusty!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+
+                return View("Completed");
+            }
+            else 
+            {
+                return View(shippingDetails);
+            }
+        }
+
 
     }
 

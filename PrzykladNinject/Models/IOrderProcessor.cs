@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PrzykladNinject.Models
 {
-    interface IOrderProcessor
+    public interface IOrderProcessor
     {
         void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
     }
