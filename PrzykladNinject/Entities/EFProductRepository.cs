@@ -14,5 +14,26 @@ namespace PrzykladNinject.Entities
         {
             get { return context.Products; } 
         }
+
+        public void SaveProduct(Product product)
+        {
+            if (product.ProductID == 0)
+            {
+                context.Products.Add(product);
+            }
+            else 
+            {
+                Product dbentry = context.Products.Find(product.ProductID);
+                if(dbentry != null)
+                {
+                    dbentry.Name = product.Name;
+                    dbentry.Description = product.Description;
+                    dbentry.Price = product.Price;
+                    dbentry.Category = product.Category;
+                }
+            }
+
+            context.SaveChanges();
+        }
     }
 }

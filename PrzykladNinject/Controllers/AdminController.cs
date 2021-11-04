@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrzykladNinject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,31 @@ namespace PrzykladNinject.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
-        public ActionResult Index()
+
+        private IProductRepository productRepository;
+
+        public AdminController(IProductRepository prod) 
         {
-            return View();
+            productRepository = prod;
+        
         }
+
+
+        // GET: Admin
+        public ViewResult Index()
+        {
+            return View(productRepository.Products);
+        }
+
+
+        public ViewResult Edit(int productId) 
+        {
+            Product product = productRepository.Products.FirstOrDefault(p => p.ProductID == productId);
+
+            return View(product);
+        }
+
+
+
     }
 }
