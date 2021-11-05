@@ -33,7 +33,41 @@ namespace PrzykladNinject.Controllers
             return View(product);
         }
 
+        [HttpPost]
+        public ActionResult Edit(Product product) 
+        {
+            if (ModelState.IsValid)
+            {
+                productRepository.SaveProduct(product);
+
+                TempData["message"] = string.Format("Zapisano {0}", product.Name);
+
+                return RedirectToAction("Index");
+            }
+            else 
+            {
+                return View(product);
+            }
+
+        }
 
 
+        public ViewResult Create() 
+        {
+            return View("Edit", new Product());
+        }
+
+        public ActionResult Delete(int productId) 
+        {
+            Product deletedProduct = productRepository.DeleteProduct(productId);
+
+            if (deletedProduct != null) 
+            {
+                TempData["message"] = string.Format("Usunięto {0}", deletedProduct.Name);
+
+            }
+            return RedirectToAction("index");
+
+        }
     }
 }

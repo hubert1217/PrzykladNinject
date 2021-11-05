@@ -15,6 +15,7 @@ namespace PrzykladNinject.Entities
             get { return context.Products; } 
         }
 
+
         public void SaveProduct(Product product)
         {
             if (product.ProductID == 0)
@@ -34,6 +35,20 @@ namespace PrzykladNinject.Entities
             }
 
             context.SaveChanges();
+        }
+
+        public Product DeleteProduct(int productId)
+        {
+            Product dbentry = context.Products.Find(productId);
+            if (dbentry != null)
+            {
+                context.Products.Remove(dbentry);
+                context.SaveChanges();
+            }
+
+
+            return dbentry;
+
         }
     }
 }
